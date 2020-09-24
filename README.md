@@ -1,0 +1,1 @@
+# spring-jpa-hibernate-join-unrelated-entities
