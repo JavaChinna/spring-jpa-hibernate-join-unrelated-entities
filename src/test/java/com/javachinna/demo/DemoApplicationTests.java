@@ -1,10 +1,8 @@
 package com.javachinna.demo;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,36 +28,36 @@ public class DemoApplicationTests {
 	@Test
 	public void getPostWithAuthorJpaTest() {
 		PostWithAuthor postWithAuthor = postRepository.getPostWithAuthor(1L);
-		assertEquals("Chinna", postWithAuthor.getAuthor().getFirstName());
+		Assertions.assertEquals("Chinna", postWithAuthor.getAuthor().getFirstName());
 	}
 
 	@Test
 	public void getPostInfoWithConstrutorExpJpaTest() {
 		List<PostInfo> list = postRepository.getPostInfoWithConstrutorExp();
-		assertThat(list).isNotEmpty();
+		Assertions.assertEquals(2, list.get(0).getViewCount());
 	}
 
 	@Test
 	public void getPostInfoWithoutJoinClauseJpaTest() {
 		List<PostInfo> list = postRepository.getPostInfoWithoutJoinClause();
-		assertThat(list).isNotEmpty();
+		Assertions.assertEquals(2, list.get(0).getViewCount());
 	}
 
 	@Test
 	public void getPostWithAuthorTest() {
 		PostWithAuthorDTO postWithAuthor = postInfoDAO.getPostWithAuthor(1L);
-		assertEquals("Chinna", postWithAuthor.getAuthor().getFirstName());
+		Assertions.assertEquals("Chinna", postWithAuthor.getAuthor().getFirstName());
 	}
 
 	@Test
 	public void getPostInfoWithoutJoinClauseTest() {
 		List<PostInfo> list = postInfoDAO.getPostInfoWithoutJoinClause();
-		assertThat(list).isNotEmpty();
+		Assertions.assertEquals(2, list.get(0).getViewCount());
 	}
 
 	@Test
 	public void getPostInfoWithConstrutorExpTest() {
 		List<PostInfo> list = postInfoDAO.getPostInfoWithConstrutorExp();
-		assertThat(list).isNotEmpty();
+		Assertions.assertEquals(2, list.get(0).getViewCount());
 	}
 }
